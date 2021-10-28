@@ -29,7 +29,7 @@ layout=[
     [sg.Text('CPF (Digite apenas números)', size=(30, 0))],
     [sg.InputText(size=(15, 0), key='cpf', do_not_clear=False)],
     [sg.Button('Identificar dígitos verificadores', size=(30, 0), key='digitos', disabled=False)],
-    # [sg.Output(size=(32,6))],
+    [sg.Output(size=(32,6))],
     [sg.Button('Sair', size=(30, 2), key='sair')]
 ]
 janela = sg.Window('Gerador de CPF').layout(layout)

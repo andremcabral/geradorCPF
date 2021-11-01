@@ -1,2 +1,4 @@
 # geradorCPF
-Gerador de número de CPF válido. Códigos para console e em tela, uma branch com cada
+Gera número de CPF válido.
+Gera digitos verificadores para CPF
+Informa de onde é o CPF

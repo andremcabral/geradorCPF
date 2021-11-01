@@ -29,7 +29,9 @@ layout=[
     [sg.Text('CPF (Digite apenas números)', size=(30, 0))],
     [sg.InputText(size=(15, 0), key='cpf', do_not_clear=False)],
     [sg.Button('Identificar dígitos verificadores', size=(30, 0), key='digitos', disabled=False)],
-    [sg.Output(size=(32,6))],
+    # [sg.Output(size=(32,6),key='s1')],
+    [sg.Text('',key='resposta', size=(30, 2))],
+    [sg.Text('',key='uf', size=(30, 2))],
     [sg.Button('Sair', size=(30, 2), key='sair')]
 ]
 janela = sg.Window('Gerador de CPF').layout(layout)
@@ -65,11 +67,15 @@ while True:
             i = randint(0, 9)
             respCpf = calculaCPF()
             uf = identificaUF(i)
-            print(f"{respCpf} - Foi gerado na UF: {uf}")
+            # print(f"{respCpf} - Foi gerado na UF: {uf}")
+            janela['resposta'].update(value=respCpf)
+            janela['uf'].update(value=f"Foi gerado na UF: {uf}")
         if (Button == 'digitos'):
             if(values['cpf']=='' or (len(values['cpf'])>9) or (len(values['cpf'])<9)):
-                print('Informe o 9 números sem pontuação')
-                cpf=int(999999999)
+                # print('Informe o 9 números sem pontuação')
+                janela['resposta'].update(value='Informe o 9 números sem pontuação')
+                janela['uf'].update(value='')
+                # cpf=int(999999999)
             else:
                 cpf = values['cpf']
                 cpf=int(cpf)
@@ -84,4 +90,6 @@ while True:
                 i = cpf // 1 % 10
                 respCpf = calculaCPF()
                 uf=identificaUF(i)
-                print(f"{respCpf} - Foi gerado na UF: {uf}")
+                # print(f"{respCpf} - Foi gerado na UF: {uf}")
+                janela['resposta'].update(value=respCpf)
+                janela['uf'].update(value=f"Foi gerado na UF: {uf}")
